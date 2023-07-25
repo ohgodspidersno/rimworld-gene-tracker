@@ -1,0 +1,32 @@
+td img {
+  width: 32px;
+  height: 32px;
+}
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+}
+
+table.hide-cosmetic img.cosmetic {
+    display: none;
+}
+
+td.active_genes img.inactive {
+    display: none;
+}
+
+td.inactive_genes img.active {
+    display: none;
+}
+
+
+table#xenotypes td img:hover{
+    -webkit-box-shadow:0px 0px 6px 4px rgba(0,166,255,0.77);
+    -moz-box-shadow: 0px 0px 6px 4px rgba(0,166,255,0.77);
+    box-shadow: 0px 0px 6px 4px rgba(0,166,255,0.77);
+    cursor: pointer;
+}
+
+.modal_genes_list img {
+    height: 48px;
+}

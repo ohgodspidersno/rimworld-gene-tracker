@@ -1,0 +1,30 @@
+<!-- Vertically centered modal -->
+{% load static %}
+
+<div id="xenotypeModal" class="modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img class="xenotype_icon" src=""> <h5 class="modal-title"><span class="xenotype_name"></span> Genes</h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <b>Mark all of the following genes missing/banked?</b>
+        <br><br>
+        <p>Non-Cosmetic</p>
+        <div id="xenotype_modal_genes_list" class="modal_genes_list">
+        </div>
+        <br>
+        <p>Cosmetic</p>
+        <div id="xenotype_modal_cosmetic_genes_list" class="modal_genes_list">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="all_missing_button" >All Missing</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="all_found_button" >All Banked</button>
+      </div>
+    </div>
+  </div>
+</div>

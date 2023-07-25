@@ -1,0 +1,4 @@
+[client]
+database = xenogenes
+user = root
+default-character-set = utf8

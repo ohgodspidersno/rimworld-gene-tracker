@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="xenotype-tab" type="button" role="tab"
+            data-bs-toggle="tab" data-bs-target="#xenotype"
+            aria-controls="xenotype" aria-selected="true">Xenotypes</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="gene-tab" type="button" role="tab"
+            data-bs-toggle="tab" data-bs-target="#gene"
+            aria-controls="gene" aria-selected="false">Genes</button>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="showCosmetic">
+          <label class="form-check-label" for="showCosmetic">Show Cosmetic Genes</label>
+        </div>
+        <div class="form-check form-switch gene-table-only-element">
+          <input class="form-check-input" type="checkbox" id="showTraderOnlyGenes" checked>
+          <label class="form-check-label" for="showTraderOnlyGenes">Show Trader-Only Genes</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade show active" id="xenotype" role="tabpanel" aria-labelledby="xenotype-tab">
+    {% include 'gene/checklist/xenotype_pane.html' %}
+  </div>
+  <div class="tab-pane fade" id="gene" role="tabpanel" aria-labelledby="gene-tab">
+    {% include 'gene/checklist/gene_pane.html' %}
+  </div>
+</div>
+
+{% include 'gene/checklist/xenotype_modal.html' %}
+
+{% endblock content %}
+
+{% block stylesheets %}
+{{ block.super }}
+<link href="{% static 'css/checklist.css' %}"
+        rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block page_javascript %}
+  {{ block.super }}
+  <script src="{% static 'js/checklist.js' %}"></script>
+{% endblock page_javascript %}
