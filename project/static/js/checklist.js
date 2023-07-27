@@ -149,8 +149,6 @@ $(document).ready(function() {
 
   });
 
-  console.log(genesTable)
-  console.log(xenotypesTable)
 
   function refreshTableSpecificElements() {
     if ($('table#genes').is(':visible')) {
@@ -170,11 +168,13 @@ $(document).ready(function() {
     genesTable.columns.adjust();
     xenotypesTable.columns.adjust();
     refreshTableSpecificElements();
+    $(".tooltip").tooltip("hide");
   });
 
   $(document).on('show.bs.tab', function (e) {
     genesTable.draw();
     xenotypesTable.draw();
+    $(".tooltip").tooltip("hide");
   });
 
   $('body').tooltip({
@@ -226,16 +226,12 @@ $(document).ready(function() {
   });
 
   $('table#xenotypes').on('click', 'img[data-xenotype]', function(e){
-    console.log(this)
     let xenotype_name = $(this).data('xenotype');
     let icon_url = $(this).attr('src');
     $('#xenotype_modal_genes_list').html('')
     $('#xenotype_modal_cosmetic_genes_list').html('')
     let $img_elements = $(this).closest('tr').find('td.active_genes img:not(.cosmetic)')
     let $cosmetic_img_elements = $(this).closest('tr').find('td.active_genes img.cosmetic')
-
-    console.log('$img_elements', $img_elements);
-    console.log('$cosmetic_img_elements', $cosmetic_img_elements);
 
     $img_elements.each(function(){
         $('#xenotype_modal_genes_list').append($.clone(this))
@@ -247,6 +243,7 @@ $(document).ready(function() {
     $('#xenotypeModal .xenotype_name').text(xenotype_name)
     $('#xenotypeModal').data('xenotype', xenotype_name)  // used when clicking confirm buttons
     $('#xenotypeModal').modal('show');
+    $(".tooltip").tooltip("hide");
   });
 
     $('#all_missing_button').on('click', function(e) {
@@ -261,6 +258,7 @@ $(document).ready(function() {
         }
         xenotypesTable.draw();
         $('#xenotypeModal').modal('hide');
+        $(".tooltip").tooltip("hide");
     })
 
     $('#all_found_button').on('click', function(e) {
@@ -275,6 +273,14 @@ $(document).ready(function() {
         }
         xenotypesTable.draw();
         $('#xenotypeModal').modal('hide');
+        $(".tooltip").tooltip("hide");
     })
+
+    $('#resetLocalData').on('click', function(){
+        localStorage.clear();
+        selected_genes = [];
+        xenotypesTable.search('').state.clear().draw();
+        genesTable.search('').state.clear().draw();
+    });
 
 });
